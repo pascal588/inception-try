@@ -1,0 +1,154 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+:root {
+  /* Warm Earthy & Pastel Tokens (Natural, Approachable, Human-Centered) */
+  --color-background: #FAF9F5;        /* Warm Cream / Natural Canvas */
+  --color-foreground: #222925;        /* Deep Warm Charcoal */
+  --color-card: #FFFFFF;
+  --color-card-foreground: #222925;
+  --color-border: #E8E3DA;            /* Warm Linen Stone */
+  --color-border-subtle: #F3EFE9;     /* Soft Sand */
+  --color-muted: #F4EFEB;             /* Soft Warm Stone */
+  --color-muted-foreground: #6B665D;  /* Earthy Muted Gray */
+
+  /* Civic Earthy Identity: Deep Pine Green & Terracotta */
+  --color-primary: #284E3A;           /* Warm Forest / Deep Pine */
+  --color-on-primary: #FFFFFF;
+  --color-accent: #C25E3B;            /* Terracotta Clay */
+  --color-accent-hover: #AF4F2E;
+  --color-on-accent: #FFFFFF;
+
+  /* Earthy Semantic Statuses */
+  --color-status-success: #2A6B48;    /* Muted Forest Green */
+  --color-status-success-bg: #EAF4EE; /* Soft Sage Pastel */
+  --color-status-warning: #9C6016;    /* Warm Ochre / Honey */
+  --color-status-warning-bg: #FEF7EA; /* Soft Amber Pastel */
+  --color-status-danger: #B43E2C;     /* Muted Terracotta Rust */
+  --color-status-danger-bg: #FDF0ED;  /* Soft Clay Pastel */
+
+  /* Focus & Accessibility */
+  --color-focus-ring: #284E3A;
+
+  /* Soft, Friendly Radius Scale */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-full: 9999px;
+
+  /* Subtle Warm Shadows */
+  --shadow-sm: 0 1px 3px 0 rgba(70, 58, 45, 0.05);
+  --shadow-panel: 0 4px 8px -2px rgba(70, 58, 45, 0.06), 0 2px 4px -2px rgba(70, 58, 45, 0.04);
+  --shadow-drawer: 0 16px 28px -6px rgba(45, 36, 26, 0.12), 0 6px 10px -4px rgba(45, 36, 26, 0.06);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Leaflet Container */
+.leaflet-container {
+  font-family: inherit;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: #EFEBE4;
+}
+
+/* Earthy Tapered Geo-Pin with Needle Anchor */
+.geo-pin-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-50%, -100%);
+  cursor: pointer;
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.geo-pin-wrapper:hover {
+  transform: translate(-50%, -110%) scale(1.1);
+  z-index: 50 !important;
+}
+
+.geo-pin-head {
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px -1px rgba(50, 40, 30, 0.28);
+  border: 2.5px solid #FFFFFF;
+}
+
+.geo-pin-needle {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  margin-top: -1.5px;
+}
+
+/* Earthy Pin Colors */
+.pin-completed .geo-pin-head {
+  background-color: #2A6B48;
+  color: #FFFFFF;
+}
+.pin-completed .geo-pin-needle {
+  border-top: 8px solid #2A6B48;
+}
+
+.pin-ongoing .geo-pin-head {
+  background-color: #A06214;
+  color: #FFFFFF;
+}
+.pin-ongoing .geo-pin-needle {
+  border-top: 8px solid #A06214;
+}
+
+.pin-flagged .geo-pin-head {
+  background-color: #B43E2C;
+  color: #FFFFFF;
+}
+.pin-flagged .geo-pin-needle {
+  border-top: 8px solid #B43E2C;
+}
+
+.pin-proposal .geo-pin-head {
+  background-color: #C25E3B; /* Warm Terracotta */
+  color: #FFFFFF;
+}
+.pin-proposal .geo-pin-needle {
+  border-top: 8px solid #C25E3B;
+}
+
+/* Soft Warm Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #D8D2C6;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #BFB8AB;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
